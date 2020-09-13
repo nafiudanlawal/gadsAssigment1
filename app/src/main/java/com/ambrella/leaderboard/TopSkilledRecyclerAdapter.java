@@ -13,12 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TopSkilledRecyclerAdapter extends RecyclerView.Adapter<TopSkilledRecyclerAdapter.TopSkilledViewVolder> {
 
-    private final ArrayList<TopSkilled> mTopSkilled;
+    private final List<TopSkilled> mTopSkilled;
 
-    public TopSkilledRecyclerAdapter(ArrayList<TopSkilled> topSkilled) {
+    public TopSkilledRecyclerAdapter(List<TopSkilled> topSkilled) {
         mTopSkilled = topSkilled;
     }
 
@@ -46,7 +47,10 @@ public class TopSkilledRecyclerAdapter extends RecyclerView.Adapter<TopSkilledRe
     }
 
     public class TopSkilledViewVolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView tvName, tvScore, tvCountry;
+        private TextView tvName;
+        private TextView tvScore;
+        private TextView tvCountry;
+
         public TopSkilledViewVolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(R.id.tvName);
@@ -55,8 +59,8 @@ public class TopSkilledRecyclerAdapter extends RecyclerView.Adapter<TopSkilledRe
         }
         public void bind(TopSkilled topSkilled){
             tvName.setText(topSkilled.getName());
-            tvCountry.setText(topSkilled.getCountry());
-            tvScore.setText(topSkilled.getScore());
+            tvCountry.setText(", " + topSkilled.getCountry());
+            tvScore.setText(String.valueOf(topSkilled.getScore()) + " Skill IQ score");
         }
         @Override
         public void onClick(View view) {
