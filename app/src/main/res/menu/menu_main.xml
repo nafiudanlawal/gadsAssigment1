@@ -4,6 +4,5 @@
     <item
         android:id="@+id/action_submit"
         android:title="submit"
-        app:showAsAction="ifRoom">Submit
-    </item>
+        app:showAsAction="always">Submit</item>
 </menu>

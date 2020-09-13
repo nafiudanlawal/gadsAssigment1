@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,25 +39,6 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /*mRv = findViewById(R.id.rvTestRecylerView);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        mRv.setLayoutManager(layoutManager);
-        mContext = this;*/
-
-
-        /*LeadersService mGetLeadersService = ServiceBuilder.buildService(LeadersService.class);
-        Call<List<TopSkilled>> call = mGetLeadersService.getSkillIQLeaders();
-        call.enqueue(new Callback<List<TopSkilled>>() {
-            @Override
-            public void onResponse(Call<List<TopSkilled>> call, Response<List<TopSkilled>> response) {
-                mRv.setAdapter(new DefaultRecyclerAdapter(mContext, response.body()));
-            }
-
-            @Override
-            public void onFailure(Call<List<TopSkilled>> call, Throwable t) {
-                showToast("Failded to Load");
-            }
-        });*/
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
@@ -64,6 +47,12 @@ public class MainActivity extends AppCompatActivity{
         tabs.setupWithViewPager(viewPager);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
